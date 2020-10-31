@@ -1,7 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
-
 
 def index(request):
-    return render(request, 'mainapp/index.html')
+    content = dict()
+    return render(request, 'mainapp/index.html', content)
+
+
+def category(request):
+    content = dict()
+    return render(request, 'mainapp/category.html', content)
+
+
+def single_product(request):
+    content = dict()
+    return render(request, 'mainapp/single-product.html', content)
