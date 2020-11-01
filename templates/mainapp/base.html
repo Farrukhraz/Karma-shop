@@ -16,7 +16,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>{{ page_title }}</title>
 
 	<link rel="stylesheet" href="{% static 'mainapp/css/linearicons.css' %}">
 	<link rel="stylesheet" href="{% static 'mainapp/css/owl.carousel.css' %}">
@@ -50,13 +50,13 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="{% url 'karma_main_page_index' %}">Home</a></li>
-							<li class="nav-item submenu dropdown">
+							<li class="nav-item {{ navbar_status_home|default:"" }}"><a class="nav-link" href="{% url 'karma_main_page_index' %}">Home</a></li>
+							<li class="nav-item submenu dropdown {{ navbar_status_shop|default:"" }}">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="{% url 'single-product' %}">Product Details</a></li>
+									<li class="nav-item {{ navbar_status_shop_category|default:"" }}"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
+									<li class="nav-item {{ navbar_status_single_product|default:"" }}"><a class="nav-link" href="{% url 'single-product' %}">Product Details</a></li>
 								</ul>
 							</li>
 						</ul>
