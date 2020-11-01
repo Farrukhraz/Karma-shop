@@ -18,19 +18,8 @@
 	<!-- Site Title -->
 	<title>{{ page_title }}</title>
 
-	<link rel="stylesheet" href="{% static 'mainapp/css/linearicons.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/owl.carousel.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/themify-icons.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/bootstrap.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/owl.carousel.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/nice-select.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/nouislider.min.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/ion.rangeSlider.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/ion.rangeSlider.skinFlat.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/magnific-popup.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/bootstrap.css' %}">
-	<link rel="stylesheet" href="{% static 'mainapp/css/main.css' %}">
+    {% include 'mainapp/includes/styles/inc__cs.html' %}
+
 </head>
 
 <body>
@@ -49,14 +38,15 @@
 					</button>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        {% with active_page=request.resolver_match.url_name %}
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item {{ navbar_status_home|default:"" }}"><a class="nav-link" href="{% url 'karma_main_page_index' %}">Home</a></li>
-							<li class="nav-item submenu dropdown {{ navbar_status_shop|default:"" }}">
+							<li class="nav-item {% ifequal active_page 'karma_main_page_index' %} active {% endifequal %}"><a class="nav-link" href="{% url 'karma_main_page_index' %}">Home</a></li>
+							<li class="nav-item submenu dropdown {% if active_page == 'category' or active_page == 'single_product' %} active {% endif %}">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item {{ navbar_status_shop_category|default:"" }}"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
-									<li class="nav-item {{ navbar_status_single_product|default:"" }}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>
+									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
+									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -66,6 +56,7 @@
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
 						</ul>
+                        {% endwith %}
 					</div>
 				</div>
 			</nav>
@@ -85,142 +76,7 @@
     {% block everything_else %}
     {% endblock %}
 
-    <!-- Start related-product Area -->
-	<section class="related-product-area section_gap_bottom">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Deals of the Week</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r1.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r2.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r3.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r5.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r6.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r7.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r9.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r10.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="{% static 'mainapp/img/r11.jpg' %}" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="ctg-right">
-						<a href="#" target="_blank">
-							<img class="img-fluid d-block mx-auto" src="{% static 'mainapp/img/category/c5.jpg' %}" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End related-product Area -->
+    {% include 'mainapp/includes/inc__related_product.html' %}
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
@@ -302,21 +158,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 	<!-- End footer Area -->
 
-	<script src="{% static 'mainapp/js/vendor/jquery-2.2.4.min.js' %}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="{% static 'mainapp/js/vendor/bootstrap.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/jquery.ajaxchimp.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/jquery.nice-select.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/jquery.sticky.js' %}"></script>
-	<script src="{% static 'mainapp/js/nouislider.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/countdown.js' %}"></script>
-	<script src="{% static 'mainapp/js/jquery.magnific-popup.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/owl.carousel.min.js' %}"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="{% static 'mainapp/js/gmaps.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/main.js' %}"></script>
+    {% include 'mainapp/includes/styles/inc__js.html' %}
 </body>
 
 </html>
