@@ -19,8 +19,11 @@ def index(request):
         index_data = json.load(f)
     context = dict(
         related_products=get_related_products(),
-        page_title=index_data.get("page_title") or "Karma"
+        page_title=index_data.get("page_title") or "Karma",
+        single_features=index_data.get("single_features"),
+        products=index_data.get("products")
     )
+    print(context.get("products")[0])
     return render(request, 'mainapp/index.html', context=context)
 
 
