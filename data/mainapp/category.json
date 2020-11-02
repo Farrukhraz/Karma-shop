@@ -1,5 +1,165 @@
 {
   "page_title": "Karma categories",
-  "navbar_status_shop": "active",
-  "navbar_status_shop_category": "active"
+  "categories": [
+    {
+      "name": "Running shoes",
+      "id": "Running",
+      "url": "#Running",
+      "aria_controls": "Running",
+      "quantity": "34",
+      "sub_categories": [
+        {
+          "name":  "Nike",
+          "url": "#",
+          "quantity": "13"
+        },
+        {
+          "name":  "Puma",
+          "url": "#",
+          "quantity": "11"
+        },
+        {
+          "name":  "Adidas",
+          "url": "#",
+          "quantity": "25"
+        }
+      ]
+    },
+    {
+      "name": "Walking shoes",
+      "id": "Walking",
+      "url": "#Walking",
+      "aria_controls": "Walking",
+      "quantity": "96",
+      "sub_categories": [
+        {
+          "name":  "Nike",
+          "url": "#",
+          "quantity": "3"
+        },
+        {
+          "name":  "Puma",
+          "url": "#",
+          "quantity": "11"
+        },
+        {
+          "name":  "Adidas",
+          "url": "#",
+          "quantity": "16"
+        }
+      ]
+    },
+    {
+      "name": "Swimming shoes",
+      "id": "Swimming",
+      "url": "#Swimming",
+      "aria_controls": "Swimming",
+      "quantity": "45",
+      "sub_categories": [
+        {
+          "name":  "Nike",
+          "url": "#",
+          "quantity": "19"
+        },
+        {
+          "name":  "Puma",
+          "url": "#",
+          "quantity": "13"
+        },
+        {
+          "name":  "Adidas",
+          "url": "#",
+          "quantity": "1"
+        }
+      ]
+    }
+  ],
+  "product_filters": [
+    {
+      "filter_category_name": "BRAND",
+      "sub_filter_name_tag": "brand",
+      "filters": [
+        {
+          "name": "Nike",
+          "id": "apple",
+          "label": "apple",
+          "quantity": "4"
+        },
+        {
+          "name": "Adidas",
+          "id": "asus",
+          "label": "asus",
+          "quantity": "28"
+        },
+        {
+          "name": "Puma",
+          "id": "micromax",
+          "label": "micromax",
+          "quantity": "46"
+        }
+      ]
+    },
+    {
+      "filter_category_name": "COLOR",
+      "sub_filter_name_tag": "color",
+      "filters": [
+        {
+          "name": "Black",
+          "id": "black",
+          "label": "black",
+          "quantity": "14"
+        },
+        {
+          "name": "Black Leather",
+          "id": "balckleather",
+          "label": "balckleather",
+          "quantity": "8"
+        },
+        {
+          "name": "Red",
+          "id": "blackred",
+          "label": "blackred",
+          "quantity": "36"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p1.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p2.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p6.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p3.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p4.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p5.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    }
+  ]
 }

@@ -13,32 +13,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="row">
-                            {% for related_product in related_products %}
-                                <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-                                    <div class="single-related-product d-flex">
+                        {% for related_product in related_products %}
+                            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                                <div class="single-related-product d-flex">
 {#                                        <a href="#"><img src="{% static related_product.image_path %}" alt=""></a>#}
-                                        <a href="{{ related_product.page_link }}"><img src="{% static related_product.image_path %}" alt=""></a>
-                                        <div class="desc">
-                                            <a href="#" class="title">{{ related_product.description }}</a>
-                                            <div class="price">
-                                                <h6>{{ related_product.price_for_sale }}</h6>
-                                                <h6 class="l-through">{{ related_product.price }}</h6>
-                                            </div>
+                                    <a href="{{ related_product.page_link }}"><img src="{% static related_product.image_path %}" alt=""></a>
+                                    <div class="desc">
+                                        <a href="#" class="title">{{ related_product.description }}</a>
+                                        <div class="price">
+                                            <h6>{{ related_product.price_for_sale }}</h6>
+                                            <h6 class="l-through">{{ related_product.price }}</h6>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="ctg-right">
-                        <a href="#" target="_blank">
-                            <img class="img-fluid d-block mx-auto" src="{% static 'mainapp/img/category/c5.jpg' %}" alt="">
-                        </a>
-                    </div>
-                </div>
+{#                <div class="col-lg-3">#}
+{#                    <div class="ctg-right">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img class="img-fluid d-block mx-auto" src="{% static 'mainapp/img/category/c5.jpg' %}" alt="">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
             </div>
         {% else %}
             <h3></h3>

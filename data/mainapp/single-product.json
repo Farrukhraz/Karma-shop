@@ -1,5 +1,31 @@
 {
   "page_title": "Karma product",
-  "navbar_status_shop": "active",
-  "navbar_status_single_product": "active"
+  "product_description": {
+    "specifications": [
+      {
+        "name": "Width",
+        "value": "188mm"
+      },
+      {
+        "name": "Height",
+        "value": "158mm"
+      },
+      {
+        "name": "Length",
+        "value": "285mm"
+      },
+      {
+        "name": "Weight",
+        "value": "520 gm"
+      },
+      {
+        "name": "Quality checking",
+        "value": "yes"
+      },
+      {
+        "name": "Each Box contains",
+        "value": "1 pair"
+      }
+  ]
+  }
 }
