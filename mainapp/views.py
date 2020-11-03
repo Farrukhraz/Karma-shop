@@ -8,7 +8,7 @@ DATA_DIR = os.path.join(BASE_DIR, 'data', 'mainapp')
 
 
 def get_related_products() -> dict:
-    with open(os.path.join(DATA_DIR, 'related_products.json')) as f:
+    with open(os.path.join(DATA_DIR, 'related_products.json'), encoding='utf-8') as f:
         related_products_data = json.load(f)
     related_products = related_products_data.get("related_products") or dict()
     return related_products
@@ -28,7 +28,7 @@ def index(request):
 
 
 def category(request):
-    with open(os.path.join(DATA_DIR, 'category.json')) as f:
+    with open(os.path.join(DATA_DIR, 'category.json'), encoding='utf-8') as f:
         category_data = json.load(f)
     context = dict(
         related_products=get_related_products(),
@@ -41,7 +41,7 @@ def category(request):
 
 
 def single_product(request):
-    with open(os.path.join(DATA_DIR, 'single-product.json')) as f:
+    with open(os.path.join(DATA_DIR, 'single-product.json'), encoding='utf-8') as f:
         single_product_data = json.load(f)
     context = dict(
         related_products=get_related_products(),
