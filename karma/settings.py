@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_KARMA_SK')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

@@ -29,24 +29,24 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'karma_main_page_index' %}"><img src="{% static 'mainapp/img/logo.png' %}" alt=""></a>
+					<a class="navbar-brand logo_h" href="{% url 'mainapp:karma_main_page_index' %}"><img src="{% static 'mainapp/img/logo.png' %}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+						{% for _ in '123'|make_list %}
+                            <span class="icon-bar"></span>
+                        {% endfor %}
 					</button>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         {% with active_page=request.resolver_match.url_name %}
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item {% ifequal active_page 'karma_main_page_index' %} active {% endifequal %}"><a class="nav-link" href="{% url 'karma_main_page_index' %}">Home</a></li>
+							<li class="nav-item {% ifequal active_page 'karma_main_page_index' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:karma_main_page_index' %}">Home</a></li>
 							<li class="nav-item submenu dropdown {% if active_page == 'category' or active_page == 'single_product' %} active {% endif %}">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
-									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>
+									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:category' %}">Shop Category</a></li>
+									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:single_product' %}">Product Details</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -120,14 +120,11 @@
 					<div class="single-footer-widget mail-chimp">
 						<h6 class="mb-20">Instragram Feed</h6>
 						<ul class="instafeed d-flex flex-wrap">
-							<li><img src="{% static 'mainapp/img/i1.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i2.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i3.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i4.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i5.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i6.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i7.jpg' %}" alt=""></li>
-							<li><img src="{% static 'mainapp/img/i8.jpg' %}" alt=""></li>
+                            {% for i in '12345678'|make_list %}
+                                {% with 'mainapp/img/i'|add:i|add:'.jpg' as image_name %}
+							        <li><img src="{% static image_name %}" alt=""></li>
+                                {% endwith %}
+                            {% endfor %}
 						</ul>
 					</div>
 				</div>
