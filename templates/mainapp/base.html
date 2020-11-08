@@ -29,7 +29,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'mainapp:karma_main_page_index' %}"><img src="{% static 'mainapp/img/logo.png' %}" alt=""></a>
+					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img src="{% static 'mainapp/img/logo.png' %}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						{% for _ in '123'|make_list %}
@@ -40,13 +40,13 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         {% with active_page=request.resolver_match.url_name %}
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item {% ifequal active_page 'karma_main_page_index' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:karma_main_page_index' %}">Home</a></li>
+							<li class="nav-item {% ifequal active_page 'main' %} active {% endifequal %}"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
 							<li class="nav-item submenu dropdown {% if active_page == 'category' or active_page == 'single_product' %} active {% endif %}">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:category' %}">Shop Category</a></li>
-									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'mainapp:single_product' %}">Product Details</a></li>
+									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'products:index' %}">Shop Category</a></li>
+									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>
 								</ul>
 							</li>
 						</ul>

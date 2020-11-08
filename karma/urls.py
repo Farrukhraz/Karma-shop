@@ -18,8 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from mainapp import views
+
 urlpatterns = [
-    path('', include('mainapp.urls', namespace='mainapp')),
+    path('', views.index, name='main'),
+    path('products/', include('mainapp.urls', namespace='products')),
+    path('single-product/', views.single_product, name="single_product"),
     path('admin/', admin.site.urls),
 ]
 
