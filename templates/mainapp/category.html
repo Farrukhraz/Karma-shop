@@ -49,26 +49,46 @@
 {#				</div>#}
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Product Filters</div>
-                    {% for product_filter in product_filters %}
                         <div class="common-filter">
-                            <div class="head">{{ product_filter.filter_category_name }}</div>
+                            <div class="head">BRAND</div>
                             <form action="#">
                                 <ul>
-                                    {% for filter in product_filter.filters %}
+                                    {% for brand in brands %}
                                         <li class="filter-list">
-                                            <input class="pixel-radio" type="radio" id="{{ filter.id }}" name="{{ product_filter.sub_filter_name_tag }}">
-                                            <label for="{{ filter.label }}">
-                                                <a href='#'>{{ filter.name }}</a>
-                                                <span>
-                                                    ({{ filter.quantity }})
-                                                </span>
-                                            </label>
+{#                                            <input class="pixel-radio" type="radio" id="{{ filter.id }}" name="{{ product_filter.sub_filter_name_tag }}">#}
+                                            <input class="pixel-radio" type="radio" name="brand">
+{#                                            <label for="apple">#}
+                                                {% with brand_id=brand.id %}
+                                                    <a href='{% url 'products:index' %}'>{{ brand.name }}</a>
+                                                {% endwith %}
+{#                                                <span>#}
+{#                                                    ("counted quantity")#}
+{#                                                </span>#}
+{#                                            </label>#}
                                         </li>
                                     {% endfor %}
                                 </ul>
                             </form>
                         </div>
-                    {% endfor %}
+{#Убираю фильтр по цвету (временно)#}
+{#                        <div class="common-filter">#}
+{#                            <div class="head">{{ product_filter.filter_category_name }}</div>#}
+{#                            <form action="#">#}
+{#                                <ul>#}
+{#                                    {% for filter in product_filter.filters %}#}
+{#                                        <li class="filter-list">#}
+{#                                            <input class="pixel-radio" type="radio" id="{{ filter.id }}" name="{{ product_filter.sub_filter_name_tag }}">#}
+{#                                            <label for="{{ filter.label }}">#}
+{#                                                <a href='#'>{{ filter.name }}</a>#}
+{#                                                <span>#}
+{#                                                    ({{ filter.quantity }})#}
+{#                                                </span>#}
+{#                                            </label>#}
+{#                                        </li>#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                            </form>#}
+{#                        </div>#}
 					<div class="common-filter">
 						<div class="head">Price</div>
 						<div class="price-range-area">
@@ -122,14 +142,12 @@
                         {% for product in products %}
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-                                {% with image_path=product.image_path %}
-								    <img class="img-fluid" src="{% static image_path %}" alt="">
-                                {% endwith %}
+								<img class="img-fluid" src="{{ product.image.url }}" alt="">
 								<div class="product-details">
 									<h6>{{ product.name }}</h6>
 									<div class="price">
-										<h6>${{ product.for_sale_price }}</h6>
-										<h6 class="l-through">${{ product.price }}</h6>
+{#										<h6 class="l-through">${{ product.price_for_sale }}</h6>#}
+										<h6>${{ product.price }}</h6>
 									</div>
 									<div class="prd-bottom">
 

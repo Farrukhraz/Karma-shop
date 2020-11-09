@@ -31,14 +31,14 @@ def index(request):
     return render(request, 'mainapp/index.html', context=context)
 
 
-def category(request, pk=None):
-    print(pk)
+def category(request, pk=None, *args, **kwargs):
+    if pk is not None and pk in range(1, 4):
+        products = [i for i in Product.objects.all() if i.brand_name_id == pk]
+    else:
+        products = Product.objects.all()
     context = dict(
-        related_products=get_related_products(),
-        page_title=category_data.get("page_title") or "Karma",
-        categories=category_data.get("categories"),
-        product_filters=category_data.get("product_filters"),
-        products=Product.objects.all()
+        brands=ProductBrand.objects.all(),
+        products=products
     )
     return render(request, 'mainapp/category.html', context=context)
 
