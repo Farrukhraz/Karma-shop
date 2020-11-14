@@ -2,22 +2,31 @@ import os
 import json
 from django.shortcuts import render
 from karma.settings import BASE_DIR
-from mainapp.models import ProductCategory, ProductBrand, Product
+from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek
 
 DATA_DIR = os.path.join(BASE_DIR, 'data', 'mainapp')
 
 with open(os.path.join(DATA_DIR, 'index.json')) as f:
     index_data = json.load(f)
-with open(os.path.join(DATA_DIR, 'related_products.json'), encoding='utf-8') as f:
-    related_products_data = json.load(f)
+# with open(os.path.join(DATA_DIR, 'related_products.json'), encoding='utf-8') as f:
+#     related_products_data = json.load(f)
 with open(os.path.join(DATA_DIR, 'category.json'), encoding='utf-8') as f:
     category_data = json.load(f)
 with open(os.path.join(DATA_DIR, 'single-product.json'), encoding='utf-8') as f:
     single_product_data = json.load(f)
 
 
-def get_related_products() -> dict:
-    related_products = related_products_data.get("related_products") or dict()
+def get_related_products() -> list:
+    deals_of_the_week = DealsOfTheWeek().objects.all()
+    related_products = list()
+    for deal in deals_of_the_week:
+        related_products.append(dict(
+            description=deal.name,
+            price=deal.price,
+            price_for_sale=deal.price*0.7,
+            image=deal.image_path,
+            page_link=deal.url
+        ))
     return related_products
 
 

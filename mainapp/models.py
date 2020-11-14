@@ -44,6 +44,7 @@ class DealsOfTheWeek(models.Model):
     name = models.CharField(verbose_name="product name", max_length=64)
     price = models.DecimalField(verbose_name="product name", max_digits=8, decimal_places=2, default=0)
     image = models.ImageField(verbose_name="product image", blank=True)
+    url = models.URLField(verbose_name="product url", max_length=200, default="#")
 
     def __str__(self):
         return f"Deals of the week - Name: {self.name}; Price: {self.price}"
