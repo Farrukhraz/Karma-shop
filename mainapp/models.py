@@ -29,3 +29,23 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} - Category:({self.category.name}); Brand: ({self.brand_name})"
+
+
+class HotOffers(models.Model):
+    title = models.CharField(verbose_name='product title', max_length=64)
+    description = models.TextField(verbose_name='product description', max_length=200, blank=True)
+    image = models.ImageField(upload_to='hot_offers_images', blank=True)
+
+    def __str__(self):
+        return f"Hot offer product name: {self.title}"
+
+
+class DealsOfTheWeek(models.Model):
+    name = models.CharField(verbose_name="product name", max_length=64)
+    price = models.DecimalField(verbose_name="product name", max_digits=8, decimal_places=2, default=0)
+    image = models.ImageField(verbose_name="product image", blank=True)
+
+    def __str__(self):
+        return f"Deals of the week - Name: {self.name}; Price: {self.price}"
+
+

@@ -24,7 +24,6 @@ def get_related_products() -> dict:
 def index(request):
     context = dict(
         related_products=get_related_products(),
-        page_title=index_data.get("page_title") or "Karma",
         single_features=index_data.get("single_features"),
         products=index_data.get("products")
     )
