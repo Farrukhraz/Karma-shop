@@ -1,32 +1,26 @@
+from django.shortcuts import render
+
+####################################################################################
+# JSON
 import os
 import json
-from django.shortcuts import render
-from karma.settings import BASE_DIR
 from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek
+from karma.settings import BASE_DIR
 
 DATA_DIR = os.path.join(BASE_DIR, 'data', 'mainapp')
 
 with open(os.path.join(DATA_DIR, 'index.json')) as f:
     index_data = json.load(f)
-# with open(os.path.join(DATA_DIR, 'related_products.json'), encoding='utf-8') as f:
-#     related_products_data = json.load(f)
-with open(os.path.join(DATA_DIR, 'category.json'), encoding='utf-8') as f:
-    category_data = json.load(f)
 with open(os.path.join(DATA_DIR, 'single-product.json'), encoding='utf-8') as f:
     single_product_data = json.load(f)
+####################################################################################
 
 
 def get_related_products() -> list:
-    deals_of_the_week = DealsOfTheWeek().objects.all()
+    deals_of_the_week = DealsOfTheWeek.objects.all()
     related_products = list()
     for deal in deals_of_the_week:
-        related_products.append(dict(
-            description=deal.name,
-            price=deal.price,
-            price_for_sale=deal.price*0.7,
-            image=deal.image_path,
-            page_link=deal.url
-        ))
+        related_products.append(deal)
     return related_products
 
 
@@ -49,17 +43,6 @@ def category(request, pk=None, *args, **kwargs):
         products=products
     )
     return render(request, 'mainapp/category.html', context=context)
-
-
-# def category(request):
-#     context = dict(
-#         related_products=get_related_products(),
-#         page_title=category_data.get("page_title") or "Karma",
-#         categories=category_data.get("categories"),
-#         product_filters=category_data.get("product_filters"),
-#         products=category_data.get("products")
-#     )
-#     return render(request, 'mainapp/category.html', context=context)
 
 
 def single_product(request):

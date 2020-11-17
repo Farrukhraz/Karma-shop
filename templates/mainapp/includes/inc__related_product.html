@@ -18,12 +18,12 @@
                         {% for related_product in related_products %}
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="{{ related_product.page_link }}"><img src="{% static related_product.image_path %}" alt=""></a>
+                                    <a href="{{ related_product.url }}"><img src="{{ related_product.image.url }}" alt="img should be here =("></a>
                                     <div class="desc">
-                                        <a href="#" class="title">{{ related_product.description }}</a>
+                                        <a href="#" class="title">{{ related_product.name }}</a>
                                         <div class="price">
-                                            <h6>{{ related_product.price_for_sale }}</h6>
-                                            <h6 class="l-through">{{ related_product.price }}</h6>
+{#                                            <h6 class="l-through">{{ related_product.price_for_sale }}</h6>#}
+                                            <h6>{{ related_product.price }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -31,13 +31,6 @@
                         {% endfor %}
                     </div>
                 </div>
-{#                <div class="col-lg-3">#}
-{#                    <div class="ctg-right">#}
-{#                        <a href="#" target="_blank">#}
-{#                            <img class="img-fluid d-block mx-auto" src="{% static 'mainapp/img/category/c5.jpg' %}" alt="">#}
-{#                        </a>#}
-{#                    </div>#}
-{#                </div>#}
             </div>
         {% else %}
             <h3></h3>
