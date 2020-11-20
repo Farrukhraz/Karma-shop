@@ -1,10 +1,10 @@
 from django.shortcuts import render
+from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek
 
 ####################################################################################
 # JSON
 import os
 import json
-from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek
 from karma.settings import BASE_DIR
 
 DATA_DIR = os.path.join(BASE_DIR, 'data', 'mainapp')
