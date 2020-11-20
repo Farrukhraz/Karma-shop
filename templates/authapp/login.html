@@ -46,6 +46,11 @@
                                 {{ field.as_widget }}
                             </div>
                         {% endfor %}
+                        {% if form.errors %}
+                            <div class="col-md-12 form-group">
+                                <p>Your username or password didn't match. Please try again.</p>
+                            </div>
+                        {% endif %}
                         <div class="col-md-12 form-group">
                             <div class="creat_account">
                                 <input type="checkbox" id="f-option2" name="selector">
