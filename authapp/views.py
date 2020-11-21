@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
 from authapp.models import AuthPageImages
 
 
@@ -53,4 +53,19 @@ def register(request):
 
 
 def edit(request):
-    return HttpResponseRedirect(reverse('main'))
+    if request.method == 'POST':
+        update_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+
+        if update_form.is_valid():
+            update_form.save()
+            return HttpResponseRedirect(reverse('auth:edit'))
+    else:
+        update_form = ShopUserEditForm(instance=request.user)
+
+    content = {
+        'title': 'Редактирование профиля',
+        'update_form': update_form,
+        'auth_page_images': AuthPageImages.objects.all()
+    }
+
+    return render(request, 'authapp/edit.html', content)
