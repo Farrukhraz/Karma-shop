@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import User
+
+from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product, ProductBrand, HotOffers, DealsOfTheWeek
 
 import json
@@ -59,5 +60,5 @@ class Command(BaseCommand):
             new_deal_of_the_week = DealsOfTheWeek(**deal_of_the_week)
             new_deal_of_the_week.save()
 
-        # Создаем суперпользователя при помощи менеджера модели
-        super_user = User.objects.create_superuser('django', 'django@geekshop.local', 'geekbrains')
+        if not ShopUser.objects.filter(username='django').exists():
+            ShopUser.objects.create_superuser('django', 'django@geekshop.local', 'geekbrains')
