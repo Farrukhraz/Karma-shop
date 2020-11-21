@@ -1,0 +1,1 @@
+[{"model": "authapp.authpageimages", "pk": 1, "fields": {"name": "registration field", "image": "auth_page_images/login.jpg"}}]

@@ -1,0 +1,4 @@
+[
+  {"model": "mainapp.productcategory", "pk": 1, "fields": {"name": "Running", "description": ""}},
+  {"model": "mainapp.productcategory", "pk": 2, "fields": {"name": "Swimming", "description": ""}},
+  {"model": "mainapp.productcategory", "pk": 3, "fields": {"name": "Walking", "description": "Shoes for walking"}}]
