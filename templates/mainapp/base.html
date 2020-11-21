@@ -46,10 +46,14 @@
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'products:index' %}">Shop Category</a></li>
-									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>
+{#									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'single_product' %}">Product Details</a></li>#}
 								</ul>
 							</li>
-                            <li class="nav-item {% ifequal active_page 'login' %} active {% endifequal %}"><a class="nav-link" href="{% url 'auth:login' %}">Login</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'auth:logout' %}">Logout</a></li>
+                            {% else %}
+                                <li class="nav-item {% ifequal active_page 'login' %} active {% endifequal %}"><a class="nav-link" href="{% url 'auth:login' %}">Login</a></li>
+                            {% endif %}
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
