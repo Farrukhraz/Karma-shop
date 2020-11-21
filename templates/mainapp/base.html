@@ -50,9 +50,33 @@
 								</ul>
 							</li>
                             {% if user.is_authenticated %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'auth:logout' %}">Logout</a></li>
+                                <li class="nav-item submenu dropdown {% if active_page == 'register' or active_page == 'edit' %} active {% endif %}">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                     aria-expanded="false">
+                                        {{ user.first_name|default:'Incognito' }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item {% ifequal active_page 'edit' %} active {% endifequal %}">
+                                            <a class="nav-link" href="{% url 'auth:edit' %}">
+                                                Edit
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'auth:logout' %}">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             {% else %}
-                                <li class="nav-item {% ifequal active_page 'login' %} active {% endifequal %}"><a class="nav-link" href="{% url 'auth:login' %}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'auth:register' %}">Register</a></li>
+                            {% endif %}
+                            {% if not user.is_authenticated %}
+                                <li class="nav-item {% ifequal active_page 'login' %} active {% endifequal %}">
+                                    <a class="nav-link" href="{% url 'auth:login' %}">
+                                        Login
+                                    </a>
+                                </li>
                             {% endif %}
 						</ul>
 						<ul class="nav navbar-nav navbar-right">

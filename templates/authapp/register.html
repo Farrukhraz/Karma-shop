@@ -27,39 +27,28 @@
             <div class="col-lg-6">
                 <div class="login_box_img">
                     <img class="img-fluid" src="{{ auth_page_images.0.image.url }}" alt="">
-                    <div class="hover">
-                        <h4>New to our website?</h4>
-                        <p>So, what are you waiting for?<br>Click bellow and register
-                        </p>
-{#                        ToDo: Добавить стараницу с регистрацией #}
-                        <a class="primary-btn" href="{% url 'auth:register' %}">Create an Account</a>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
-                    <h3>Log in to enter</h3>
+                    <h3>Register new account</h3>
                     <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
                         {% csrf_token %}
-                        {% for field in form %}
+                        {% for field in register_form %}
                             <div class="col-md-12 form-group">
+                                {% if field.name == 'avatar' %}
+                                    <h5>Avatar</h5>
+                                {% endif %}
                                 {{ field.as_widget }}
                             </div>
                         {% endfor %}
                         {% if form.errors %}
                             <div class="col-md-12 form-group">
-                                <p>Your username or password didn't match. Please try again.</p>
+                                <p>Please try again.</p>
                             </div>
                         {% endif %}
                         <div class="col-md-12 form-group">
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option2" name="selector">
-                                <label for="f-option2">Keep me logged in</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="primary-btn">Log In</button>
-                            <a href="">Forgot Password?</a>
+                            <button type="submit" value="submit" class="primary-btn">Register</button>
                         </div>
                     </form>
                 </div>
