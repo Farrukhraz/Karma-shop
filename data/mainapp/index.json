@@ -1,0 +1,75 @@
+{
+  "page_title": "Karma shop",
+  "single_features": [
+    {
+      "image_path": "mainapp/img/features/f-icon1.png",
+      "name": "Free Delivery",
+      "description": "Free Shipping on all order"
+    },
+    {
+      "image_path": "mainapp/img/features/f-icon2.png",
+      "name": "Return Policy",
+      "description": "Free Shipping on all order"
+    },
+    {
+      "image_path": "mainapp/img/features/f-icon3.png",
+      "name": "24/7 Support",
+      "description": "Free Shipping on all order"
+    },
+    {
+      "image_path": "mainapp/img/features/f-icon4.png",
+      "name": "Secure Payment",
+      "description": "Free Shipping on all order"
+    }
+  ],
+  "products": [
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p1.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p2.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p6.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p3.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p4.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p5.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p7.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    },
+    {
+      "name": "Adidas New Hammer",
+      "image_path": "mainapp/img/product/p8.jpg",
+      "price": "210.00",
+      "for_sale_price": "150.00"
+    }
+  ]
+}

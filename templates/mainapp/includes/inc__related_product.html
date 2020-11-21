@@ -1,0 +1,39 @@
+{% load static %}
+
+<section class="related-product-area section_gap_bottom">
+    <div class="container">
+        {% if related_products %}
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Deals of the Week</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        {% for related_product in related_products %}
+                            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                                <div class="single-related-product d-flex">
+                                    <a href="{{ related_product.url }}"><img src="{{ related_product.image.url }}" alt="img should be here =("></a>
+                                    <div class="desc">
+                                        <a href="#" class="title">{{ related_product.name }}</a>
+                                        <div class="price">
+{#                                            <h6 class="l-through">{{ related_product.price_for_sale }}</h6>#}
+                                            <h6>{{ related_product.price }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h3></h3>
+        {% endif %}
+    </div>
+</section>

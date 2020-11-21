@@ -1,0 +1,134 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block everything_else %}
+
+<!-- start banner Area -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-start">
+            <div class="col-lg-12">
+                <div class="active-banner-slider owl-carousel">
+                    <!-- single-slide -->
+                    {% for i in '12'|make_list %}
+                    <div class="row single-slide align-items-center d-flex">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="banner-content">
+                                <h1>Nike New <br>Collection!</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                                <div class="add-bag d-flex align-items-center">
+                                    <a class="add-btn" href="#"><span class="lnr lnr-cross"></span></a>
+                                    <span class="add-text text-uppercase">Add to Bag</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="banner-img">
+                                <img class="img-fluid" src="{% static 'mainapp/img/banner/banner-img.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- start features Area -->
+<section class="features-area section_gap">
+    <div class="container">
+        <div class="row features-inner">
+            {% for single_feature in single_features %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-features">
+                        <div class="f-icon">
+                            <img src="{% static single_feature.image_path %}" alt="">
+                        </div>
+                        <h6>{{ single_feature.name }}</h6>
+                        <p>{{ single_feature.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- end features Area -->
+
+<!-- start product Area -->
+<section class="owl-carousel active-product-area section_gap">
+    <!-- single product slide -->
+    {% for i in '11'|make_list %}
+    <div class="single-product-slider">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Latest Products</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore
+                            magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-product">
+                                {% with image_path=product.image_path %}
+                                    <img class="img-fluid" src="{% static image_path %}" alt="">
+                                {% endwith %}
+                                <div class="product-details">
+                                    <h6>{{ product.name }}</h6>
+                                    <div class="price">
+                                        <h6>${{ product.for_sale_price }}</h6>
+                                        <h6 class="l-through">${{ product.price }}</h6>
+                                    </div>
+                                    <div class="prd-bottom">
+
+                                        <a href="" class="social-info">
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">add to bag</p>
+                                        </a>
+                                        <a href="" class="social-info">
+                                            <span class="lnr lnr-heart"></span>
+                                            <p class="hover-text">Wishlist</p>
+                                        </a>
+                                        <a href="" class="social-info">
+                                            <span class="lnr lnr-sync"></span>
+                                            <p class="hover-text">compare</p>
+                                        </a>
+                                        <a href="" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">view more</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<!-- end product Area -->
+
+<!-- Start brand Area -->
+<section class="brand-area section_gap">
+    <div class="container">
+        <div class="row">
+            {% for i in '12345'|make_list %}
+                {% with image_path='mainapp/img/brand/'|add:i|add:'.png' %}
+                    <a class="col single-img" href="#">
+                        <img class="img-fluid d-block mx-auto" src="{% static image_path %}" alt="">
+                    </a>
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End brand Area -->
+{% endblock %}

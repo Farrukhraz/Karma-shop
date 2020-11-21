@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from mainapp.models import ProductCategory, ProductBrand, Product, HotOffers, DealsOfTheWeek
+
+admin.site.register(ProductBrand)
+admin.site.register(ProductCategory)
+admin.site.register(Product)
+admin.site.register(HotOffers)
+admin.site.register(DealsOfTheWeek)

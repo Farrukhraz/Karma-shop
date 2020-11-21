@@ -1,0 +1,67 @@
+{
+  "related_products": [
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r1.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r2.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r3.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r5.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r6.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r7.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r9.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r10.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    },
+    {
+      "page_link": "#",
+      "image_path": "mainapp/img/r11.jpg",
+      "description": "Black lace Heels",
+      "price": "210.00",
+      "price_for_sale": "189.00"
+    }
+  ]
+}

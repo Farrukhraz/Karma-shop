@@ -1,0 +1,4 @@
+[{"model": "mainapp.productbrand", "pk": 1, "fields": {"name": "Nike", "description": "Nike brand shoes"}},
+  {"model": "mainapp.productbrand", "pk": 2, "fields": {"name": "Puma", "description": "Puma brand shoes"}},
+  {"model": "mainapp.productbrand", "pk": 3, "fields": {"name": "Adidas", "description": "Adidas brand"}},
+  {"model": "mainapp.productbrand", "pk": 4, "fields": {"name": "Erke", "description": "Erke is the most popular chinese brand"}}]
