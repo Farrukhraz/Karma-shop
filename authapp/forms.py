@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.core.exceptions import ValidationError
+from django.forms import forms
 
 from authapp.models import ShopUser
 
@@ -29,9 +29,10 @@ class ShopUserRegisterForm(UserCreationForm):
             field.widget.attrs['placeholder'] = str(field_name).title()
             field.help_text = ''
 
+    # любой валидатор должен начинаться с 'clean'. Т.е. clean_fieldName
     def clean_age(self):
-        data = self.cleaned_data['age']
+        data = self.cleaned_data.get('age')
         if data < 18:
-            raise ValidationError("Вы слишком молоды!")
+            raise forms.ValidationError("Вы слишком молоды!")
 
         return data

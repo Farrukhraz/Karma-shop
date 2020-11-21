@@ -53,7 +53,7 @@
                                 <li class="nav-item submenu dropdown {% if active_page == 'register' or active_page == 'edit' %} active {% endif %}">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                      aria-expanded="false">
-                                        {{ user.first_name|default:'Incognito' }}
+                                        {{ user.username|default:'Incognito' }}
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item {% ifequal active_page 'edit' %} active {% endifequal %}">

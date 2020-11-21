@@ -34,8 +34,6 @@ def logout(request):
 
 
 def register(request):
-    title = 'регистрация'
-
     if request.method == 'POST':
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
 
@@ -45,7 +43,11 @@ def register(request):
     else:
         register_form = ShopUserRegisterForm()
 
-    content = {'title': title, 'register_form': register_form}
+    content = {
+        'title': 'регистрация',
+        'register_form': register_form,
+        'auth_page_images': AuthPageImages.objects.all()
+    }
 
     return render(request, 'authapp/register.html', content)
 

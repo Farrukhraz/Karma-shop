@@ -32,7 +32,7 @@
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>Register new account</h3>
-                    <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row login_form" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% for field in register_form %}
                             <div class="col-md-12 form-group">
@@ -42,11 +42,11 @@
                                 {{ field.as_widget }}
                             </div>
                         {% endfor %}
-                        {% if form.errors %}
-                            <div class="col-md-12 form-group">
-                                <p>Please try again.</p>
-                            </div>
-                        {% endif %}
+{#                        {% if register_form.errors %}#}
+                        <p>
+                            <br>{{ register_form.errors }}<br>
+                            <br>{{ register_form.non_field_errors }}
+                        </p>
                         <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Register</button>
                         </div>
