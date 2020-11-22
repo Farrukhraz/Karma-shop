@@ -17,7 +17,7 @@ def login(request):
             user = auth.authenticate(username=user_name, password=password)
             if user and user.is_active:
                 auth.login(request, user)   # cookie creation
-                return HttpResponseRedirect(reverse('main'))
+                return HttpResponseRedirect(reverse('main:index'))
     else:
         # render empty form
         form = ShopUserLoginForm()
@@ -30,7 +30,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('main'))
+    return HttpResponseRedirect(reverse('main:index'))
 
 
 def register(request):

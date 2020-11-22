@@ -10,9 +10,9 @@
 				<div class="col-first">
 					<h1>Shop Category page</h1>
 					<nav class="d-flex align-items-center">
-						<a href="{% url 'main' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="{% url 'products:index' %}">Fashon Category</a>
+						<a href="{% url 'main:catalog' %}">Fashon Category</a>
 					</nav>
 				</div>
 			</div>
@@ -47,6 +47,7 @@
 {#                        {% endfor %}#}
 {#					</ul>#}
 {#				</div>#}
+                <!--BRAND-->
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Product Filters</div>
                         <div class="common-filter">
@@ -59,7 +60,7 @@
                                             <input class="pixel-radio" type="radio" name="brand">
 {#                                            <label for="apple">#}
                                                 {% with brand_id=brand.id %}
-                                                    <a href='{% url 'products:index' %}'>{{ brand.name }}</a>
+                                                    <a href='{% url 'main:category_items' brand_id %}'>{{ brand.name }}</a>
                                                 {% endwith %}
 {#                                                <span>#}
 {#                                                    ("counted quantity")#}
