@@ -1,0 +1,107 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block everything_else %}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th style="text-align:center" scope="col">Price</th>
+                            <th style="text-align:center" scope="col">Quantity</th>
+                            <th style="text-align:center" scope="col">Delete</th>
+                            <th style="text-align:center" scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if basket_items %}
+                        {% for basket_item, product, item_total_price in basket_items %}
+                            <tr style="text-align:center">
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="{{ product.image.url }}" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{ product.name }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>${{ product.price|default:0 }}</h5>
+                                </td>
+                                <td>
+                                    <h5>
+                                        {{ basket_item.quantity|default:1 }}
+                                    </h5>
+{#                                    <div class="product_count">#}
+{#                                        <input type="text" name="qty" id="sst" maxlength="12" value="{{ basket_item.quantity|default:1 }}" title="Quantity:"#}
+{#                                            class="input-text qty">#}
+{#                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"#}
+{#                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>#}
+{#                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"#}
+{#                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>#}
+{#                                    </div>#}
+                                </td>
+                                <td>
+                                    <div style="text-align:center">
+                                        <a href="{% url 'basket:remove' basket_item.id %}"><img src="{% static 'mainapp/img/dustbin.png' %}" alt=""></a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>${{ item_total_price }}</h5>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td>
+                                    <h3>Your basket is empty =(</h3>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        {% endif %}
+                        <tr style="text-align:center">
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td></td>
+                            <td>
+                                <h5>${{ basket_items_total_price|default:0 }}</h5>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+
+{% endblock %}

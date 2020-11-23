@@ -33,14 +33,24 @@ def index(request):
     return render(request, 'mainapp/index.html', context=context)
 
 
-def category(request, pk=None, *args, **kwargs):
-    if pk is not None and pk in range(1, 4):
-        products = [i for i in Product.objects.all() if i.brand_name_id == pk]
-    else:
-        products = Product.objects.all()
+def products(request, *args, **kwargs):
+    shop_products = Product.objects.all()
     context = dict(
         brands=ProductBrand.objects.all(),
-        products=products
+        products=shop_products
+    )
+    return render(request, 'mainapp/category.html', context=context)
+
+
+def category_items(request, category_pk=None, *args, **kwargs):
+    if category_pk is not None and category_pk in range(1, 4):
+        category_products = [i for i in Product.objects.all() if i.brand_name_id == category_pk]
+    else:
+        # products = Product.objects.all()
+        category_products = []
+    context = dict(
+        brands=ProductBrand.objects.all(),
+        products=category_products
     )
     return render(request, 'mainapp/category.html', context=context)
 
