@@ -1,19 +1,5 @@
 from django.shortcuts import render
-from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek
-
-####################################################################################
-# JSON
-import os
-import json
-from karma.settings import BASE_DIR
-
-DATA_DIR = os.path.join(BASE_DIR, 'data', 'mainapp')
-
-with open(os.path.join(DATA_DIR, 'index.json')) as f:
-    index_data = json.load(f)
-with open(os.path.join(DATA_DIR, 'single-product.json'), encoding='utf-8') as f:
-    single_product_data = json.load(f)
-####################################################################################
+from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek, SingleFeature
 
 
 def get_related_products() -> list:
@@ -25,10 +11,10 @@ def get_related_products() -> list:
 
 
 def index(request):
+    single_features = SingleFeature.objects.all()
     context = dict(
         related_products=get_related_products(),
-        single_features=index_data.get("single_features"),
-        products=index_data.get("products")
+        single_features=single_features,
     )
     return render(request, 'mainapp/index.html', context=context)
 
