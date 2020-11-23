@@ -50,3 +50,11 @@ class DealsOfTheWeek(models.Model):
         return f"Deals of the week - Name: {self.name}; Price: {self.price}"
 
 
+class SingleFeature(models.Model):
+    name = models.CharField(verbose_name="feature name", max_length=64)
+    short_desc = models.CharField(verbose_name="feature short description", max_length=64, blank=True)
+    description = models.TextField(verbose_name="feature description", max_length=120, blank=True)
+    image = models.ImageField(upload_to="single_feature_images", blank=True)
+
+    def __str__(self):
+        return f"Single features - Name: {self.name}"
