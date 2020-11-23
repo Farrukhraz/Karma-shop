@@ -45,7 +45,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'main:catalog' %}">Shop Category</a></li>
+									<li class="nav-item {% ifequal active_page 'category' %} active {% endifequal %}"><a class="nav-link" href="{% url 'main:catalog' %}">Products</a></li>
 {#									<li class="nav-item {% ifequal active_page 'single_product' %} active {% endifequal %}"><a class="nav-link" href="{% url 'main:single_product' %}">Product Details</a></li>#}
 								</ul>
 							</li>
@@ -81,7 +81,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item">
-                                <a href="{% url 'basket:index' %}" class="cart"><span class="ti-bag"></span></a>
+                                <a href="{% url 'basket:index' %}" class="cart"><span class="ti-bag"></span> {{ user.basket_set.count }}</a>
                             </li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>

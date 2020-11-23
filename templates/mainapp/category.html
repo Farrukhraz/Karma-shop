@@ -57,7 +57,7 @@
                                     {% for brand in brands %}
                                         <li class="filter-list">
 {#                                            <input class="pixel-radio" type="radio" id="{{ filter.id }}" name="{{ product_filter.sub_filter_name_tag }}">#}
-                                            <input class="pixel-radio" type="radio" name="brand">
+{#                                            <input class="pixel-radio" type="radio" name="brand">#}
 {#                                            <label for="apple">#}
                                                 {% with brand_id=brand.id %}
                                                     <a href='{% url 'main:category_items' brand_id %}'>{{ brand.name }}</a>
@@ -65,7 +65,6 @@
 {#                                                <span>#}
 {#                                                    ("counted quantity")#}
 {#                                                </span>#}
-{#                                            </label>#}
                                         </li>
                                     {% endfor %}
                                 </ul>
