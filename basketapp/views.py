@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 
 from basketapp.models import Basket
@@ -6,6 +7,7 @@ from mainapp.models import Product
 from collections import namedtuple
 
 
+@login_required
 def basket(request):
     basket_items = Basket.objects.filter(user=request.user)
 
@@ -16,11 +18,21 @@ def basket(request):
     return render(request, 'basketapp/basket.html', context=context)
 
 
+@login_required
 def basket_add(request, pk=None):
-    product = get_object_or_404(Product, pk=pk)
-    basket_item = request.user.basket_set.filter(product_id=pk).first()
-    if not basket_item:
-        basket_item = Basket(user=request.user, product=product)
+
+    # 1st way:
+    # product = get_object_or_404(Product, pk=pk)
+    # basket_item = request.user.basket_set.filter(product_id=pk).first()
+    # if not basket_item:
+    #     basket_item = Basket(user=request.user, product=product)
+
+    # 2nd way:
+    basket_item, _ = Basket.objects.get_or_create(
+        user=request.user,
+        product_id=pk,
+    )
+
     basket_item.quantity += 1
     basket_item.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
