@@ -8,7 +8,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Shop Category page</h1>
+					<h1>Product page</h1>
 					<nav class="d-flex align-items-center">
 						<a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
 						<a href="{% url 'main:catalog' %}">Shop<span class="lnr lnr-arrow-right"></span></a>
@@ -50,21 +50,19 @@
                                 </a>
                             </li>
 						</ul>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product_count">
-							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
+						<p>{{ product.short_desc }}</p>
+{#                        Кнопка выбора количества товара для добавления в корзину#}
+{#						<div class="product_count">#}
+{#							<label for="qty">Quantity:</label>#}
+{#							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">#}
+{#							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"#}
+{#							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>#}
+{#							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"#}
+{#							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>#}
+{#						</div>#}
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Add to Cart</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+							<a class="primary-btn" href="{% url 'basket:add' product_pk=product.id %}">Add to Cart</a>
+							<a class="icon_btn" href=""><i class="lnr lnr lnr-heart"></i></a>
 						</div>
 					</div>
 				</div>
@@ -96,26 +94,25 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
+					<p>
+                        {{ product.description }}
+                    </p>
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<div class="table-responsive">
 						<table class="table">
 							<tbody>
-                                {% for specification in product_description.specifications %}
-								<tr>
-									<td>
-										<h5>{{ specification.name }}</h5>
-									</td>
-									<td>
-										<h5>{{ specification.value }}</h5>
-									</td>
-								</tr>
-                                {% endfor %}
+{#                            Product width, heigth, weight ...#}
+{#                                {% for specification in product_description.specifications %}#}
+{#								<tr>#}
+{#									<td>#}
+{#										<h5>{{ specification.name }}</h5>#}
+{#									</td>#}
+{#									<td>#}
+{#										<h5>{{ specification.value }}</h5>#}
+{#									</td>#}
+{#								</tr>#}
+{#                                {% endfor %}#}
 							</tbody>
 						</table>
 					</div>
@@ -251,42 +248,6 @@
 										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 										commodo</p>
 								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -294,11 +255,11 @@
 								<h4>Add a Review</h4>
 								<p>Your Rating:</p>
 								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><a href=""><i class="fa fa-star"></i></a></li>
+									<li><a href=""><i class="fa fa-star"></i></a></li>
+									<li><a href=""><i class="fa fa-star"></i></a></li>
+									<li><a href=""><i class="fa fa-star"></i></a></li>
+									<li><a href=""><i class="fa fa-star"></i></a></li>
 								</ul>
 								<p>Outstanding</p>
 								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">

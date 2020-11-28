@@ -44,7 +44,7 @@
                                             <img src="{{ product.image.url }}" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <p>{{ product.name }}</p>
+                                            <a href="{% url 'mainapp:product_page' product_pk=product.id %}">{{ product.name }}</a>
                                         </div>
                                     </div>
                                 </td>
