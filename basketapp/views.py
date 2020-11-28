@@ -40,7 +40,11 @@ def basket_add(request, pk=None):
 
 def basket_remove(request, pk=None):
     print(f"Removed product from basket with id: {pk}")
-    request.user.basket_set.filter(id=pk).delete()
+    # 1st way:
+    basket_item = get_object_or_404(Basket, id=pk)
+    basket_item.delete()
+    # 2nd way:
+    # request.user.basket_set.filter(id=pk).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -62,5 +66,3 @@ def __get_basket_items(basket_items):
 def __get_basket_items_total_price(basket_items):
     total_price = sum(map(lambda x: x.product_cost, basket_items))
     return total_price
-
-
