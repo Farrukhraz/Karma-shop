@@ -19,18 +19,18 @@ def basket(request):
 
 
 @login_required
-def basket_add(request, pk=None):
+def basket_add(request, product_pk=None):
 
     # 1st way:
-    # product = get_object_or_404(Product, pk=pk)
-    # basket_item = request.user.basket_set.filter(product_id=pk).first()
+    # product = get_object_or_404(Product, pk=product_pk)
+    # basket_item = request.user.basket_set.filter(product_id=product_pk).first()
     # if not basket_item:
     #     basket_item = Basket(user=request.user, product=product)
 
     # 2nd way:
     basket_item, _ = Basket.objects.get_or_create(
         user=request.user,
-        product_id=pk,
+        product_id=product_pk,
     )
 
     basket_item.quantity += 1
@@ -38,13 +38,13 @@ def basket_add(request, pk=None):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def basket_remove(request, pk=None):
-    print(f"Removed product from basket with id: {pk}")
+def basket_remove(request, basket_pk=None):
+    print(f"Removed product from basket with id: {basket_pk}")
     # 1st way:
-    basket_item = get_object_or_404(Basket, id=pk)
+    basket_item = get_object_or_404(Basket, id=basket_pk)
     basket_item.delete()
     # 2nd way:
-    # request.user.basket_set.filter(id=pk).delete()
+    # request.user.basket_set.filter(id=basket_pk).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
