@@ -13,7 +13,7 @@ def basket(request):
 
     context = dict(
         basket_items=__get_basket_items(basket_items),
-        basket_items_total_price=__get_all_items_price(basket_items),
+        basket_items_total_price=__get_basket_items_total_price(basket_items),
     )
     return render(request, 'basketapp/basket.html', context=context)
 
@@ -52,25 +52,15 @@ def __get_basket_items(basket_items):
         try:
             product = products.filter(id=basket_item.product_id).first()
             if product:
-                item_total_price = product.price * basket_item.quantity
+                item_total_price = basket_item.product_cost
                 items.append(item(basket_item, product, item_total_price))
         except ValueError:
             continue
     return items
 
 
-def __get_all_items_price(basket_items):
-    total_price = 0
-
-    for basket_item in basket_items:
-        product = Product.objects.filter(id=basket_item.product_id).first()
-        if product:
-            try:
-                product_price = float(product.price)
-                if product_price > 0:
-                    total_price += product_price
-            except ValueError as exc:
-                print(f"Incorrect product price value")
+def __get_basket_items_total_price(basket_items):
+    total_price = sum(map(lambda x: x.product_cost, basket_items))
     return total_price
 
 
