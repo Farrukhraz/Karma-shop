@@ -8,11 +8,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Product Details Page</h1>
+					<h1>Shop Category page</h1>
 					<nav class="d-flex align-items-center">
 						<a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-{#						<a href="{% url 'main:single_product' %}">product-details</a>#}
+						<a href="{% url 'main:catalog' %}">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="">Product page</a>
 					</nav>
 				</div>
 			</div>
@@ -26,20 +26,29 @@
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
+{#                    ToDo Сделать тут разные изображения продукта#}
                         {% for i in '123'|make_list %}
                             <div class="single-prd-item">
-                                <img class="img-fluid" src="{% static 'mainapp/img/category/s-p1.jpg' %}" alt="">
+                                <img class="img-fluid" src="{{ product.image.url }}" alt="">
                             </div>
                         {% endfor %}
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>$149.99</h2>
+						<h3>{{ product.name }}</h3>
+						<h2>${{ product.price }}</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : Household</a></li>
-							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+							<li><a class="active" href="{% url "main:category_items" category_pk=product.category_id %}"><span>Category</span> : {{ product.category }}</a></li>
+                            <li>
+                                <a href="#"><span>Availibility</span>
+                                    {% if product.quantity > 0 %}
+                                        : In Stock ({{ product.quantity }})
+                                    {% else %}
+                                        : Out of Stock
+                                    {% endif %}
+                                </a>
+                            </li>
 						</ul>
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
 							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling

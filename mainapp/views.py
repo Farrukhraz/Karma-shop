@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from mainapp.models import ProductCategory, ProductBrand, Product, DealsOfTheWeek, SingleFeature
 
 
@@ -37,10 +37,17 @@ def category_items(request, category_pk=None, *args, **kwargs):
     return render(request, 'mainapp/category.html', context=context)
 
 
-# def single_product(request):
-#     context = dict(
-#         related_products=get_related_products(),
-#         page_title=single_product_data.get("page_title") or "Karma",
-#         product_description=single_product_data.get("product_description")
-#     )
-#     return render(request, 'mainapp/single-product.html', context=context)
+def product_page(request, product_pk=None):
+    # context = dict(
+    #     related_products=get_related_products(),
+    #     page_title=single_product_data.get("page_title") or "Karma",
+    #     product_description=single_product_data.get("product_description")
+    # )
+    product = get_object_or_404(Product, pk=product_pk)
+
+    context = dict(
+        product=product,
+        related_products=get_related_products(),
+    )
+
+    return render(request, 'mainapp/product_page.html', context=context)

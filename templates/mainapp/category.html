@@ -139,7 +139,7 @@
 							<div class="single-product">
 								<img class="img-fluid" src="{{ product.image.url }}" alt="">
 								<div class="product-details">
-									<h6>{{ product.name }}</h6>
+									<a href="{% url "main:product_page" product_pk=product.id %}"><h6>{{ product.name }}</h6></a>
 									<div class="price">
 {#										<h6 class="l-through">${{ product.price_for_sale }}</h6>#}
 										<h6>${{ product.price }}</h6>
