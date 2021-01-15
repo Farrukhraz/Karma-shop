@@ -47,7 +47,6 @@ def product_page(request, product_pk=None):
 
     context = dict(
         product=product,
-        related_products=get_related_products(),
     )
 
     return render(request, 'mainapp/product_page.html', context=context)

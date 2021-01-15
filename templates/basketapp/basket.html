@@ -56,7 +56,7 @@
                                         {{ basket_item.quantity|default:1 }}
                                     </h5>
 {#                                    <div class="product_count">#}
-{#                                        <input type="text" name="qty" id="sst" maxlength="12" value="{{ basket_item.quantity|default:1 }}" title="Quantity:"#}
+{#                                        <input type="number" name="qty" id="sst" min="0" max="{{ product.quantity }}" value="{{ basket_item.quantity|default:1 }}" title="Quantity:"#}
 {#                                            class="input-text qty">#}
 {#                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"#}
 {#                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>#}
