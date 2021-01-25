@@ -1,10 +1,41 @@
+from django.conf import settings
 from django.contrib import auth
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
-from authapp.models import AuthPageImages
+from authapp.models import AuthPageImages, ShopUser
+
+
+def send_verify_mail(user):
+    verify_link = reverse('authapp:verify', args=[user.email, user.activation_key, ])
+    subject = f"Confirming {user.username} account"
+    message = f"To confirm your account please follow the link:\n{settings.DOMAIN_NAME + verify_link}"
+    return send_mail(
+        subject=subject, message=message, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email, ]
+    )
+
+
+def verify(request, email, activation_key):
+    try:
+        user = ShopUser.objects.get(email=email)
+        if user.activation_key == activation_key and not user.is_activation_key_expired():
+            if user.is_verified:
+                print(f"User {user.username} is already verified")
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse('main:index'))
+            user.is_active = True
+            user.is_verified = True
+            user.save()
+            auth.login(request, user)
+        else:
+            print(f"Couldn't verify user: {user}")
+        return render(request, 'authapp/verification.html')
+    except Exception as exc:
+        print(f"Error occurred while activating user. Error: {exc.args}")
+        return HttpResponseRedirect(reverse('main:index'))
 
 
 def login(request):
@@ -38,7 +69,12 @@ def register(request):
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
 
         if register_form.is_valid():
-            register_form.save()
+            user = register_form.save()
+            if send_verify_mail(user):
+                print(f"Mail sent correctly to {user.username}")
+            else:
+                print(f"Couldn't send the mail to {user.username}")
+            # user.is_active = False
             return HttpResponseRedirect(reverse('auth:login'))
     else:
         register_form = ShopUserRegisterForm()

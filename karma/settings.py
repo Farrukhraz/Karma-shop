@@ -144,3 +144,13 @@ LOGIN_URL = '/auth/login/'
 # login: django
 # pass:  geekbrains
 
+
+DOMAIN_NAME = 'http://localhost:8000'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = 'django@django.django'
+EMAIL_HOST_PASSWORD = 'geekbrains'
+EMAIL_USE_SSL = False
+
+EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
