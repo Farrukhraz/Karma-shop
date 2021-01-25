@@ -1,0 +1,43 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block everything_else %}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Account verification</h1>
+{#                <nav class="d-flex align-items-center">#}
+{#                    <a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>#}
+{#                    <a href="#">Update profile</a>#}
+{#                </nav>#}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="login_form_inner">
+                    {% if not user.is_anonymous %}
+                        <h3>Поздравляем!</h3>
+                        <br>
+                        <h4>Пользователь {{user.username}} подтвержден. {{ user.dir }}</h4>
+                    {% else %}
+                        <h3>Верификация не пройдена. {{user.username}}</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->
+
+{% endblock %}
