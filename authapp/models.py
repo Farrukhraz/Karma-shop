@@ -16,7 +16,7 @@ class AuthPageImages(models.Model):
 
 class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to="avatars", blank=True)
-    age = models.PositiveIntegerField(verbose_name="возраст", null=True)
+    age = models.PositiveIntegerField(verbose_name="возраст", default=18)
 
     activation_key = models.CharField(verbose_name="activation key", max_length=128, blank=True)
     activation_key_expires = models.DateTimeField(default=now() + timedelta(hours=24))
