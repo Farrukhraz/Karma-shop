@@ -25,9 +25,9 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = os.environ.get('DJANGO_KARMA_SK')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -156,7 +156,9 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_KEY')
 SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 
-print(SOCIAL_AUTH_VK_OAUTH2_KEY, SOCIAL_AUTH_VK_OAUTH2_SECRET)
+if None in (SOCIAL_AUTH_VK_OAUTH2_KEY, SOCIAL_AUTH_VK_OAUTH2_SECRET, ):
+    raise EnvironmentError("VK auth keys are not provided. "
+                           "Please provide SOCIAL_AUTH_VK_OAUTH2_KEY or SOCIAL_AUTH_VK_OAUTH2_SECRET")
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
