@@ -34,15 +34,23 @@
                     <h3>Update profile</h3>
                     <form class="row login_form" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
                         {% csrf_token %}
-{#                        {%  %}#}
+{#                        {{ update_form.as_p }}#}
                         {% for field in update_form %}
                             <div class="col-md-12 form-group">
-{#                                {% if field.name == 'avatar' %}#}
-{#                                    <h5>Avatar</h5>#}
-{#                                {% endif %}#}
+                                {% if field.name == 'avatar' %}
+                                    <h5>Avatar</h5>
+                                    {{ field.as_widget }}
+                                {% else %}
+                                    {{ field.as_widget }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        {% for field in profile_form %}
+                            <div class="col-md-12 form-group">
                                 {{ field.as_widget }}
                             </div>
                         {% endfor %}
+{#                        {{ profile_form.as_p }}#}
                         <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Update</button>
                         </div>
