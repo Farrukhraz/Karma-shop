@@ -138,7 +138,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # auth
 AUTH_USER_MODEL = 'authapp.ShopUser'
 
-
 LOGIN_URL = '/auth/login/'
 
 
@@ -147,7 +146,7 @@ LOGIN_URL = '/auth/login/'
 # pass:  geekbrains
 
 
-# auth
+# auth via social networks
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.vk.VKOAuth2',
@@ -163,7 +162,7 @@ if None in (SOCIAL_AUTH_VK_OAUTH2_KEY, SOCIAL_AUTH_VK_OAUTH2_SECRET, ):
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
-# verifying via email
+# verifying user account via email
 DOMAIN_NAME = 'http://localhost:8000'
 
 EMAIL_HOST = 'localhost'

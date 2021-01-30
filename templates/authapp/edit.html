@@ -12,7 +12,7 @@
                 <h1>Update profile</h1>
                 <nav class="d-flex align-items-center">
                     <a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="#">Update profile</a>
+                    <a href="">Update profile</a>
                 </nav>
             </div>
         </div>
@@ -34,11 +34,12 @@
                     <h3>Update profile</h3>
                     <form class="row login_form" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
                         {% csrf_token %}
+{#                        {%  %}#}
                         {% for field in update_form %}
                             <div class="col-md-12 form-group">
-                                {% if field.name == 'avatar' %}
-                                    <h5>Avatar</h5>
-                                {% endif %}
+{#                                {% if field.name == 'avatar' %}#}
+{#                                    <h5>Avatar</h5>#}
+{#                                {% endif %}#}
                                 {{ field.as_widget }}
                             </div>
                         {% endfor %}
