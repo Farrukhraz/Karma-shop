@@ -8,6 +8,9 @@ from django.forms.widgets import HiddenInput, FileInput
 from authapp.models import ShopUser, ShopUserProfile
 
 
+MINIMUM_AGE = 18
+
+
 class ShopUserLoginForm(AuthenticationForm):
 
     class Meta:
@@ -36,7 +39,7 @@ class ShopUserRegisterForm(UserCreationForm):
     # любой валидатор должен начинаться с 'clean'. Т.е. clean_fieldName
     def clean_age(self):
         data = self.cleaned_data.get('age')
-        if data < 18:
+        if data < MINIMUM_AGE:
             raise forms.ValidationError("Вы слишком молоды!")
 
         return data
@@ -66,16 +69,15 @@ class ShopUserEditForm(UserChangeForm):
 
     def clean_age(self):
         data = self.cleaned_data.get('age')
-        if data < 18:
+        if data < MINIMUM_AGE:
             raise forms.ValidationError("Вы слишком молоды!")
-
         return data
 
 
 class ShopUserProfileEditForm(ModelForm):
     class Meta:
         model = ShopUserProfile
-        fields = ('tagline', 'about_me', 'gender')
+        fields = ('about_me', 'gender')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

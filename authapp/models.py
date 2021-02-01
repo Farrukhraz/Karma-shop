@@ -44,10 +44,9 @@ class ShopUserProfile(models.Model):
     )
 
     user = models.OneToOneField(to=ShopUser, on_delete=models.CASCADE, unique=True, null=False, db_index=True)
-    # ??? What is it below
-    tagline = models.CharField(verbose_name='tags', max_length=128, blank=True)
     about_me = models.CharField(verbose_name='info about user', max_length=512, blank=True)
     gender = models.CharField(verbose_name='user gender', max_length=1, choices=GENDER_CHOICES, blank=True)
+    home_town = models.CharField(verbose_name='user home town', max_length=32, blank=True)
 
     @receiver(post_save, sender=ShopUser)
     def create_user_profile(sender, instance, created, **kwargs):

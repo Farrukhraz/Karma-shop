@@ -14,7 +14,11 @@ def save_user_profile(backend, user, response, *args, **kwargs):
                           'api.vk.com',
                           '/method/users.get',
                           None,
-                          urlencode(OrderedDict(fields=','.join(('bdate', 'sex', 'about')),
+                          urlencode(OrderedDict(fields=','.join(('bdate',
+                                                                 'sex',
+                                                                 'about',
+                                                                 'home_town',
+                                                                 )),
                                                 access_token=response['access_token'],
                                                 v='5.92')),
                           None
@@ -25,7 +29,6 @@ def save_user_profile(backend, user, response, *args, **kwargs):
         return
 
     data = resp.json()['response'][0]
-    print(data)
 
     user_profile = user.shopuserprofile
 
@@ -52,5 +55,9 @@ def save_user_profile(backend, user, response, *args, **kwargs):
     about_user = data['about']
     if about_user:
         user_profile.about_me = about_user
+
+    home_town = data['home_town']
+    if home_town:
+        user_profile.home_town = home_town
 
     user.save()
