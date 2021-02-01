@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.timezone import now
+from django.utils.translation import gettext_lazy as _
 
 
 class AuthPageImages(models.Model):
@@ -19,6 +20,7 @@ class AuthPageImages(models.Model):
 class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to="avatars", blank=True)
     age = models.PositiveIntegerField(verbose_name="возраст", default=18)
+    email = models.EmailField(_('email address'), unique=True)
 
     activation_key = models.CharField(verbose_name="activation key", max_length=128, blank=True)
     activation_key_expires = models.DateTimeField(default=now() + timedelta(hours=24))

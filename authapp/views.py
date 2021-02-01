@@ -25,12 +25,12 @@ def verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             if user.is_verified:
                 print(f"User {user.username} is already verified")
-                auth.login(request, user)
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return HttpResponseRedirect(reverse('main:index'))
             user.is_active = True
             user.is_verified = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else:
             print(f"Couldn't verify user: {user}")
         return render(request, 'authapp/verification.html')
