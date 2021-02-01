@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.contrib import auth
 from django.core.mail import send_mail
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from authapp.models import AuthPageImages, ShopUser
 
 
@@ -24,12 +25,12 @@ def verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             if user.is_verified:
                 print(f"User {user.username} is already verified")
-                auth.login(request, user)
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return HttpResponseRedirect(reverse('main:index'))
             user.is_active = True
             user.is_verified = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else:
             print(f"Couldn't verify user: {user}")
         return render(request, 'authapp/verification.html')
@@ -88,19 +89,23 @@ def register(request):
     return render(request, 'authapp/register.html', content)
 
 
+@transaction.atomic
 def edit(request):
     if request.method == 'POST':
         update_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
 
-        if update_form.is_valid():
+        if update_form.is_valid() and profile_form.is_valid():
             update_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
         update_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
 
     content = {
         'title': 'Редактирование профиля',
         'update_form': update_form,
+        'profile_form': profile_form,
         'auth_page_images': AuthPageImages.objects.all()
     }
 

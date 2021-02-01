@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('authapp.urls', namespace='auth')),
     path('admin/', admin.site.urls),
     path('basket/', include('basketapp.urls', namespace='basket')),
+    path('', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:

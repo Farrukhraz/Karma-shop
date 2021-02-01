@@ -12,7 +12,7 @@
                 <h1>Login</h1>
                 <nav class="d-flex align-items-center">
                     <a href="{% url 'main:index' %}">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="#">Login</a>
+                    <a href="">Login</a>
                 </nav>
             </div>
         </div>
@@ -59,6 +59,13 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Log In</button>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button class="primary-btn">
+                                <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">Sign in via VK</a>
+                            </button>
+                        </div>
+                        <div class="col-md-12 form-group">
                             <a href="">Forgot Password?</a>
                         </div>
                     </form>

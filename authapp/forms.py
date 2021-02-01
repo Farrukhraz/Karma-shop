@@ -2,10 +2,13 @@ import hashlib
 from random import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms import forms
+from django.forms import forms, ModelForm
 from django.forms.widgets import HiddenInput, FileInput
 
-from authapp.models import ShopUser
+from authapp.models import ShopUser, ShopUserProfile
+
+
+MINIMUM_AGE = 18
 
 
 class ShopUserLoginForm(AuthenticationForm):
@@ -36,7 +39,7 @@ class ShopUserRegisterForm(UserCreationForm):
     # любой валидатор должен начинаться с 'clean'. Т.е. clean_fieldName
     def clean_age(self):
         data = self.cleaned_data.get('age')
-        if data < 18:
+        if data < MINIMUM_AGE:
             raise forms.ValidationError("Вы слишком молоды!")
 
         return data
@@ -66,7 +69,20 @@ class ShopUserEditForm(UserChangeForm):
 
     def clean_age(self):
         data = self.cleaned_data.get('age')
-        if data < 18:
+        if data < MINIMUM_AGE:
             raise forms.ValidationError("Вы слишком молоды!")
-
         return data
+
+
+class ShopUserProfileEditForm(ModelForm):
+    class Meta:
+        model = ShopUserProfile
+        fields = ('about_me', 'gender')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = str(field_name).title()
+            field.help_text = ''
+
