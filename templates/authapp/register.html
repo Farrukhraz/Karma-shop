@@ -50,9 +50,18 @@
                         <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Register</button>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <button class="primary-btn">
-                                <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">Sign in via VK</a>
+                    </form>
+                    <form class="row login_form" >
+                        <div class="col-md-6 form-group">
+                            <button class="primary-btn" type="submit"
+                                    formaction="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+                                VK
+                            </button>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <button class="primary-btn" type="submit"
+                                    formaction="https://google.com">
+                                go to Google
                             </button>
                         </div>
                     </form>

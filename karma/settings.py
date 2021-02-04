@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_KARMA_SK')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # '127.0.0.1',
+    '127.0.0.1',
     'localhost',
 ]
 
@@ -144,6 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'authapp.ShopUser'
 
 LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/'
 
 

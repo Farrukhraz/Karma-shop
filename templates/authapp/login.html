@@ -52,21 +52,21 @@
                             </div>
                         {% endif %}
                         <div class="col-md-12 form-group">
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option2" name="selector">
-                                <label for="f-option2">Keep me logged in</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Log In</button>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <button class="primary-btn">
-                                <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">Sign in via VK</a>
+                    </form>
+                    <form class="row login_form">
+                        <div class="col-md-6 form-group">
+                            <button class="primary-btn" type="submit"
+                                    formaction="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+                                VK
                             </button>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <a href="">Forgot Password?</a>
+                        <div class="col-md-6 form-group">
+                            <button class="primary-btn" type="submit"
+                                    formaction="https://google.com">
+                                go to Google
+                            </button>
                         </div>
                     </form>
                 </div>
