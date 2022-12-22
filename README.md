@@ -25,7 +25,7 @@
  
 ```
 git clone https://github.com/Farrukhraz/Karma-shop.git
-cd Karma-shop
+cd Karma-shop 
 ```
 
 Перед запуском проекта нужно создать .env файл (../Karma-shop/.env) и добавить туда необходимые переменные окружения. 
